@@ -67,15 +67,21 @@ function renderUserRepos(repos){
     repos.sort((a, b) => b.stargazers_count - a.stargazers_count);
     // Show top 5
     const topRepos = repos.slice(0, 5);
-    displayDiv.innerHTML = '<h4>Top Repositories:</h4>' +
-        '<ul>' +
-        topRepos.map(repo =>
-            `<li>
-                <a href="${repo.html_url}" target="_blank">${repo.name}</a>
-                ⭐ ${repo.stargazers_count}
-            </li>`
-        ).join('') +
-        '</ul>';
+      displayDiv.innerHTML = `
+        <h4>Top Repositories:</h4>
+        <div class="repos-list">
+            ${topRepos.map(repo => `
+                <div class="repo-card">
+                    <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+                    <div class="repo-badges">
+                        <span class="repo-badge">⭐ ${repo.stargazers_count}</span>
+                        ${repo.language ? `<span class="repo-badge">${repo.language}</span>` : ''}
+                    </div>
+                    <p>${repo.description ? repo.description : ''}</p>
+                </div>
+            `).join('')}
+        </div>
+    `;
 }
 
 async function fetchUserRepos(username){

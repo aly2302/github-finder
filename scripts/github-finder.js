@@ -27,12 +27,24 @@ async function fetchGitHubUser(username) {
 function searchUserName() {
     const inputElement = document.querySelector('.js-input-username');
     const username = inputElement.value;
+    const displayDiv = document.getElementById('profile-display');
+    displayDiv.textContent = 'Loading...';
     fetchGitHubUser(username)
         .then(data => {
             if (data) {
-                // Display user data on the page here
+                renderUserProfile(data);
             } else {
-                // Show an error message to the user
+                displayDiv.textContent = 'User not found';
             }
         });
+}
+
+function renderUserProfile(user){
+    const displayDiv = document.getElementById('profile-display');
+    displayDiv.innerHTML = `
+        <img src="${user.avatar_url}" alt="Avatar" width="100" style="border-radius:50%;">
+        <h3>${user.name ? user.name : user.login}</h3>
+        <p>${user.bio ? user.bio : 'No bio available.'}</p>
+        <p><a href="${user.html_url}" target="_blank">View Profile</a></p>
+    `;
 }

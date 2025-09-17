@@ -37,6 +37,14 @@ function searchUserName() {
                 displayDiv.textContent = 'User not found';
             }
         });
+    fetchUserRepos(username)
+        .then(data => {
+            if(data){
+                renderUserRepos(data);
+            } else {
+                displayDiv.textContent = 'Repo not found';
+            }
+        });
 }
 
 function renderUserProfile(user){
@@ -48,3 +56,41 @@ function renderUserProfile(user){
         <p><a href="${user.html_url}" target="_blank">View Profile</a></p>
     `;
 }
+
+function renderUserRepos(repos){
+    const displayDiv = document.getElementById('repos-display');
+    if (!repos || repos.length === 0) {
+        displayDiv.textContent = 'No repositories found.';
+        return;
+    }
+    // Sort by stars, descending
+    repos.sort((a, b) => b.stargazers_count - a.stargazers_count);
+    // Show top 5
+    const topRepos = repos.slice(0, 5);
+    displayDiv.innerHTML = '<h4>Top Repositories:</h4>' +
+        '<ul>' +
+        topRepos.map(repo =>
+            `<li>
+                <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+                ⭐ ${repo.stargazers_count}
+            </li>`
+        ).join('') +
+        '</ul>';
+}
+
+async function fetchUserRepos(username){
+    try{
+        const response = await fetch(`https://api.github.com/users/${username}/repos`);
+        if(!response.ok){
+            throw new Error(`Repos not Found: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log(data);
+        return data;
+    }catch (error){
+        console.error('Something went wrong!', error);
+        return null;
+    }
+}
+
+

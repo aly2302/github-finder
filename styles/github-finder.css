@@ -49,7 +49,7 @@ form {
     background: #f0f8ff;
 }
 
-.submit-button {
+.search-button {
     padding: 12px 20px;
     font-size: 16px;
     background: #0077ff;
@@ -59,7 +59,7 @@ form {
     cursor: pointer;
     transition: background 0.2s;
 }
-.submit-button:hover {
+.search-button:hover {
     background: #005fcc;
 }
 

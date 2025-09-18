@@ -3,24 +3,40 @@
     <head>
         <title>Github-Finder</title>
         <link rel="stylesheet" href="styles/github-finder.css">
+        <link rel="stylesheet" href="styles/background.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <body>
-        <div class="container">
-            <h2>Github Finder</h2>
-            <form action="">
-                <input type="text" placeholder="username" class="input-username js-input-username">
+            <div id="universe"></div>
+            <div class="container">
+            <div class="logo" data-aos="fade-down">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub Logo">
+            </div>
+            <h2 data-aos="fade-up">Github Finder</h2>
+            <p class="subtitle" data-aos="fade-up" data-aos-delay="100">Find any GitHub user's profile, top repositories, and language stats.<br>Start by entering a username above!</p>
+            <form action="" data-aos="zoom-in" data-aos-delay="200">
+                <input type="text" placeholder="Enter a GitHub username..." class="input-username js-input-username">
                 <button class="search-button" type="submit">Search</button>
             </form>
-            <div class="main-card">
-                <div id="profile-display"></div>
-                <div id="chart-container" style="display:none">
+            <div class="main-card" data-aos="fade-up" data-aos-delay="300">
+                <div id="profile-display">
+                    <div class="placeholder">
+                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f50d.png" alt="Search Icon" width="48" height="48" class="placeholder-icon">
+                        <span>Profile info will appear here.</span>
+                    </div>
+                </div>
+                <div id="chart-container" style="display:none;">
                     <canvas id="languageChart"></canvas>
                 </div>
-                <div id="repos-display"></div>
+                <div id="repos-display">
+                    <div class="placeholder">
+                        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4c1.png" alt="Folder Icon" width="48" height="48" class="placeholder-icon">
+                        <span>Repositories will appear here.</span>
+                    </div>
+                </div>
             </div>
         </div>
-        <script src="scripts/github-finder.js">
-        </script>
+        <script src="scripts/github-finder.js"></script>
+        <script src="scripts/background.js"></script>
     </body>
 </html>

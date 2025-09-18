@@ -100,6 +100,7 @@ async function fetchUserRepos(username){
     }
 }
 
+let languageChartInstance = null;
 
 function renderLanguageChart(repos){
     const chartContainer = document.getElementById('chart-container');
@@ -125,9 +126,12 @@ function renderLanguageChart(repos){
     const labels = Object.keys(languageCounts);
     const data = Object.values(languageCounts);
 
-    //3. Create the chart.
+    if(languageChartInstance){
+        languageChartInstance.destroy();
+    }
 
-    new Chart(ctx, {
+    //3. Create the chart.
+    languageChartInstance = new Chart(ctx, {
         type: 'doughnut',
         data: {
             labels: labels,

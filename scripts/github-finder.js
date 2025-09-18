@@ -50,6 +50,7 @@ function searchUserName() {
 
 function renderUserProfile(user){
     const displayDiv = document.getElementById('profile-display');
+    displayDiv.classList.add('card-visible');
     displayDiv.innerHTML = `
         <img src="${user.avatar_url}" alt="Avatar" width="100" style="border-radius:50%;">
         <h3>${user.name ? user.name : user.login}</h3>
@@ -61,6 +62,7 @@ function renderUserProfile(user){
 function renderUserRepos(repos){
     const displayDiv = document.getElementById('repos-display');
     if (!repos || repos.length === 0) {
+        displayDiv.classList.remove('card-visible');
         displayDiv.textContent = 'No repositories found.';
         return;
     }
@@ -68,7 +70,8 @@ function renderUserRepos(repos){
     repos.sort((a, b) => b.stargazers_count - a.stargazers_count);
     // Show top 5
     const topRepos = repos.slice(0, 5);
-      displayDiv.innerHTML = `
+    displayDiv.classList.add('card-visible');
+    displayDiv.innerHTML = `
         <h4>Top Repositories:</h4>
         <div class="repos-list">
             ${topRepos.map(repo => `
@@ -118,6 +121,7 @@ function renderLanguageChart(repos){
 
     if(Object.keys(languageCounts).length === 0){
         chartContainer.style.display = 'none';
+        chartContainer.classList.remove('card-visible');
         return;
     }
 
@@ -165,4 +169,5 @@ function renderLanguageChart(repos){
 
     //4. Make the chart container visible.
     chartContainer.style.display = 'block';
+    chartContainer.classList.add('card-visible');
 }

@@ -1,108 +1,188 @@
-.logo {
-    display: flex;
+.placeholder-profile, .placeholder-repos {
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-bottom: 16px;
+    gap: 18px;
+    min-height: 80px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 10px;
+    box-shadow: 0 1px 6px rgba(74,119,229,0.04);
+    margin-bottom: 8px;
+    padding: 12px 18px;
 }
+.placeholder-profile .placeholder-icon,
+.placeholder-repos .placeholder-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0;
+}
+.placeholder-text {
+    font-size: 1.08em;
+    color: #7a869a;
+    font-style: italic;
+    opacity: 0.95;
+}
+.frontpage-welcome {
+    background: rgba(255,255,255,0.92);
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    padding: 28px 24px 18px 24px;
+    margin-bottom: 32px;
+    text-align: center;
+    animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1);
+}
+.frontpage-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #1a2236;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+.frontpage-desc {
+    font-size: 1.08em;
+    color: #2d3a4a;
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+.frontpage-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px 32px;
+    max-width: 420px;
+    font-size: 1em;
+    color: #3a4a6b;
+    opacity: 0.92;
+}
+.frontpage-features li {
+    background: #f3f6fa;
+    border-radius: 8px;
+    padding: 7px 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    font-weight: 500;
+    transition: background 0.2s;
+}
+.frontpage-features li:hover {
+    background: #e6eefa;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: none; }
+}
+
+.search-button {
+    background: linear-gradient(90deg, #ffa17f 0%, #00223e 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 1.08em;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    transition: background 0.18s, transform 0.13s;
+}
+.search-button:hover, .search-button:focus {
+    background: linear-gradient(90deg, #00223e 0%, #ffa17f 100%);
+    transform: translateY(-2px) scale(1.04);
+    outline: none;
+}
+
+.input-username {
+    border: 1.5px solid #dbe2ef;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 1.08em;
+    margin-right: 10px;
+    transition: border 0.18s, box-shadow 0.18s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+.input-username:focus {
+    border: 1.5px solid #ffa17f;
+    box-shadow: 0 2px 8px rgba(255,161,127,0.13);
+    outline: none;
+}
+.input-username:hover {
+    border: 1.5px solid #00223e;
+}
+.placeholder-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 6px;
+    opacity: 0.85;
+}
+
+@media (max-width: 600px) {
+    .results-area {
+        gap: 16px;
+    }
+    .placeholder {
+        min-height: 80px;
+        font-size: 0.95em;
+    }
+    .placeholder-icon {
+        width: 36px;
+        height: 36px;
+    }
+}
+/* styles/github-finder.css */
+
+/* 1. Base & Variables */
+body {
+    background: #f5f6fa;
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 40px 20px;
+}
+
+/* 2. Main Container & Intro */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+}
+
 .logo img {
     width: 48px;
     height: 48px;
-    opacity: 0.92;
-}
-
-.subtitle {
-    font-size: 1.12em;
-    color: #2d3a4a;
-    margin-bottom: 28px;
-    text-align: center;
-    letter-spacing: 0.5px;
-    font-weight: 500;
-    background: rgba(255,255,255,0.85);
-    border-radius: 10px;
-    padding: 12px 18px 10px 18px;
-    box-shadow: 0 1px 6px rgba(74,119,229,0.04);
-    max-width: 90vw;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100px;
-    color: #b0b8c9;
-    font-size: 1em;
-    opacity: 0.95;
-    font-style: italic;
-    gap: 8px;
-}
-body {
-    min-height: 100vh;
-    background: var(--bg-color);
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-    color: var(--text-color);
-}
-
-:root {
-    --bg-color: #e0e5ec;
-    --primary-color: #4a77e5;
-    --primary-light: #6a91f5;
-    --text-color: #5b6577;
-    --shadow-light: #ffffff;
-    --shadow-dark: #a3b1c6;
 }
 
 h2 {
     font-size: 2.5em;
-    font-weight: 600;
-    margin-bottom: 50px;
-    color: var(--text-color);
-    text-align: center;
-    letter-spacing: 1px;
-}
-
-.container {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-h2 {
-    margin-bottom: 24px;
+    font-weight: bold;
     color: #222;
-    text-align: center;
+    margin: 10px 0 20px 0;
 }
 
+/* 3. Form Styling */
 form {
     display: flex;
+    max-width: 500px;
+    margin: 0 auto 40px auto;
     gap: 10px;
-    background: #fff;
-    padding: 30px 25px;
-    border-radius: 10px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    width: 100%;
-    max-width: 400px;
-    justify-content: center;
 }
 
 .input-username {
+    flex: 1;
     padding: 12px 16px;
     font-size: 16px;
-    background: var(--bg-color);
-    color: var(--text-color);
     border: 1px solid #d1d5db;
     border-radius: 6px;
     outline: none;
-    flex: 1;
-    
+    transition: border-color 0.2s;
 }
 .input-username:focus {
     border-color: #0077ff;
-    background: #f0f8ff;
 }
 
 .search-button {
@@ -113,58 +193,63 @@ form {
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    box-shadow: 5px 5px 10px var(--shadow-dark),
-                -5px -5px 10px var(--shadow-light);
-    transition: all 0.2s ease-in-out;
+    transition: background 0.2s;
 }
 .search-button:hover {
     background: #005fcc;
 }
 
-#profile-display{
+/* 4. Results Area Layout */
+.results-area {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column for mobile */
+    gap: 30px;
+    text-align: left;
+}
+
+/* 5. Card Styling (Profile, Repos, Chart) */
+/* Card appearance only when content is present */
+#profile-display.card-visible,
+#repos-display.card-visible,
+#chart-container.card-visible {
     background-color: white;
-    padding: 24px 16px;
     border-radius: 12px;
+    padding: 25px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    margin-top: 24px;
-    text-align: center;
-    min-width: 250px;
-    max-width: 350px;
-    margin-left: auto;
-    margin-right: auto;
     border: 1px solid #e0e0e0;
 }
-
-#profile-display:hover{
-    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-    transform: translate(-2px) scale(1.02);
-    transition: box-shadow 0.2s, transform 0.2s;
+/* Remove card appearance by default (empty) */
+#profile-display,
+#repos-display,
+#chart-container {
+    background-color: unset;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    border: none;
 }
 
+#profile-display {
+    text-align: center;
+}
 #profile-display img {
-    border-radius: 50%;
     width: 100px;
+    height: 100px;
+    border-radius: 50%;
     margin-bottom: 16px;
-    max-width: 100%; /* responsive for smaller screens */
-    height: auto;
 }
-
-
-
-#profile-display h3{
-    margin: 8px 0 4px 0; /* space above and below the name */
+#profile-display h3 {
+    margin: 8px 0 4px 0;
     font-size: 1.3em;
     color: black;
 }
-
 #profile-display p {
-    margin: 4px 0;      /* space between the paragrahs */
+    margin: 4px 0;
     color: #555;
     font-size: 1em;
 }
-
 #profile-display a {
-    display: inline-block; /* */
+    display: inline-block;
     margin-top: 12px;
     color: #0077ff;
     text-decoration: none;
@@ -174,104 +259,60 @@ form {
     padding: 6px 14px;
     transition: background 0.2s, color 0.2s;
 }
-
 #profile-display a:hover {
     background: #0077ff;
     color: #fff;
 }
 
-#repos-display {
-    margin-top: 24px;
-    text-align: left;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+#repos-display h4 {
+    font-size: 1.5em;
+    color: #222;
+    margin: 0 0 20px 0;
+    text-align: center;
 }
-
 .repos-list {
     display: flex;
     flex-direction: column;
-    gap: 16px; /* space between repo cards */
-    padding: 0px;
-    margin: 0px;
+    gap: 16px;
+    padding: 0;
+    margin: 0;
 }
-
 .repo-card {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.07);
     padding: 16px 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
     border-left: 3px solid #0077ff;
-    transition: box-shadow 0.2s;
 }
-
-.repo-card:hover {
-    box-shadow: 0 4px 16px rgba(0,0,0,0.13);
-}
-
-.repo-card a{
+.repo-card a {
     font-weight: bold;
     color: #0077ff;
     text-decoration: none;
     font-size: 1.1em;
 }
-
-.repo-card a:hover {
-    text-decoration: underline;
-}
-
 .repo-badges {
     display: flex;
     gap: 10px;
+    margin-top: 15px;
     font-size: 0.95em;
 }
-
 .repo-badge {
     background: #f0f4fa;
     color: #333;
     border-radius: 6px;
     padding: 2px 8px;
     font-weight: 500;
-    display: inline-block;
 }
 
-#repos-display h4 {
-    font-size: 1.3em;
-    color: #222;
-    margin-bottom: 16px;
-    margin-top: 0;
-    letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-#repos-display h4::before {
-    content: '⭐';
-    font-size: 1.1em;
-    color: #f7b500;
-}
-
-#chart-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 400px;
-    margin: 32px auto 0 auto;
-    background: #fff;
-    border-radius: 16px;
-    padding: 20px 10px 10px 10px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-}
-
-#languageChart {
-    width: 100% !important;
-    max-width: 340px;
-    height: auto !important;
-    display: block;
-    margin: 0 auto;
+/* 6. Responsive Layout for Desktop */
+@media (min-width: 768px) {
+    .results-area {
+        grid-template-columns: 320px 1fr; /* Two columns: fixed for profile, flexible for repos */
+        grid-template-areas:
+            "profile repos"
+            "chart   repos";
+    }
+    #profile-display { grid-area: profile; }
+    #chart-container { grid-area: chart; }
+    #repos-display { grid-area: repos; }
 }

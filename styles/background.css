@@ -1,37 +1,25 @@
-body {
-  background: #ffa17f;
-  background: -webkit-linear-gradient(to right, #00223e, #ffa17f);
-  background: linear-gradient(to right, #00223e, #ffa17f);
-  overflow: hidden;
+/* styles/background.css */
+
+#universe {
+    position: fixed; /* Keeps it locked in the background */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Puts it behind all other content */
+    background: #ffa17f;
+    background: -webkit-linear-gradient(to right, #00223e, #ffa17f);
+    background: linear-gradient(to right, #00223e, #ffa17f);
+    overflow: hidden; /* Keep overflow hidden on the container, not the body */
 }
 
-.star0 {
-  height: 1px;
-  width: 1px;
-  opacity: 1;
-  position: absolute;
+/* --- Star Styles --- */
+.star0, .star1, .star2, .star3 {
+    position: absolute;
+    background-color: white;
+    opacity: 1;
 }
-
-.star1 {
-  height: 2px;
-  width: 2px;
-  border-radius: 50%;
-  opacity: 1;
-  position: absolute;
-}
-
-.star2 {
-  height: 3px;
-  width: 3px;
-  border-radius: 50%;
-  opacity: 1;
-  position: absolute;
-}
-
-.star3 {
-  height: 4px;
-  width: 4px;
-  border-radius: 50%;
-  opacity: 1;
-  position: absolute;
-}
+.star0 { height: 1px; width: 1px; }
+.star1 { height: 2px; width: 2px; border-radius: 50%; }
+.star2 { height: 3px; width: 3px; border-radius: 50%; }
+.star3 { height: 4px; width: 4px; border-radius: 50%; }

@@ -41,6 +41,7 @@ function searchUserName() {
         .then(data => {
             if(data){
                 renderUserRepos(data);
+                renderLanguageChart(data);
             } else {
                 displayDiv.textContent = 'Repo not found';
             }
@@ -100,3 +101,64 @@ async function fetchUserRepos(username){
 }
 
 
+function renderLanguageChart(repos){
+    const chartContainer = document.getElementById('chart-container');
+    const ctx = document.getElementById('languageChart').getContext('2d');
+
+    // 1. Process the repo data to count languages.
+    const languageCounts = repos.reduce((acc, repo) => {
+        if(repo.language){
+            acc[repo.language] = (acc[repo.language] || 0) + 1;
+        }
+        return acc;
+    }, {}); /* */
+
+    // if there's no language data , don't show the chart.
+
+    if(Object.keys(languageCounts).length === 0){
+        chartContainer.style.display = 'none';
+        return;
+    }
+
+    //2. prepare the data for Chart.js
+
+    const labels = Object.keys(languageCounts);
+    const data = Object.values(languageCounts);
+
+    //3. Create the chart.
+
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Languages',
+                data: data,
+                backgroundColor: [
+                    '#4a77e5',
+                    '#ff6384',
+                    '#36a2eb',
+                    '#ffce56',
+                    '#4bc0c0',
+                    '#9966ff'
+                ],
+                borderWidth: 0,
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Top Languages By Repo Count'
+                }
+            }
+        }
+    });
+
+    //4. Make the chart container visible.
+    chartContainer.style.display = 'block';
+}

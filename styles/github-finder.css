@@ -4,14 +4,28 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #f5f6fa;
+    background: var(--bg-color);
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    color: var(--text-color);
+}
+
+:root {
+    --bg-color: #e0e5ec;
+    --primary-color: #4a77e5;
+    --primary-light: #6a91f5;
+    --text-color: #5b6577;
+    --shadow-light: #ffffff;
+    --shadow-dark: #a3b1c6;
 }
 
 h2 {
-    font-size: 2.2em;
-    font-weight: bold;
+    font-size: 2.5em;
+    font-weight: 600;
+    margin-bottom: 50px;
+    color: var(--text-color);
+    text-align: center;
+    letter-spacing: 1px;
 }
 
 .container {
@@ -20,6 +34,7 @@ h2 {
     align-items: center;
     width: 100%;
     max-width: 400px;
+    padding: 20px;
 }
 
 h2 {
@@ -43,11 +58,13 @@ form {
 .input-username {
     padding: 12px 16px;
     font-size: 16px;
+    background: var(--bg-color);
+    color: var(--text-color);
     border: 1px solid #d1d5db;
     border-radius: 6px;
     outline: none;
-    transition: border-color 0.2s;
     flex: 1;
+    
 }
 .input-username:focus {
     border-color: #0077ff;
@@ -62,7 +79,9 @@ form {
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    transition: background 0.2s;
+    box-shadow: 5px 5px 10px var(--shadow-dark),
+                -5px -5px 10px var(--shadow-light);
+    transition: all 0.2s ease-in-out;
 }
 .search-button:hover {
     background: #005fcc;
@@ -95,6 +114,8 @@ form {
     max-width: 100%; /* responsive for smaller screens */
     height: auto;
 }
+
+
 
 #profile-display h3{
     margin: 8px 0 4px 0; /* space above and below the name */
@@ -197,4 +218,26 @@ form {
     content: '⭐';
     font-size: 1.1em;
     color: #f7b500;
+}
+
+#chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 32px auto 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px 10px 10px 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+#languageChart {
+    width: 100% !important;
+    max-width: 340px;
+    height: auto !important;
+    display: block;
+    margin: 0 auto;
 }
